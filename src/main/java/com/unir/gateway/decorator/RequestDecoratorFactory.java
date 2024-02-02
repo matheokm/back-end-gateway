@@ -33,6 +33,8 @@ public class RequestDecoratorFactory {
             return switch (request.getTargetMethod().name()) {
                 case "GET" -> new GetRequestDecorator(request);
                 case "POST" -> new PostRequestDecorator(request, objectMapper);
+                case "PUT" -> new PutRequestDecorator(request, objectMapper);
+                case "DELETE" -> new DeleteRequestDecorator(request, objectMapper);
                 default -> throw new IllegalArgumentException("Invalid http method");
             };
         }
